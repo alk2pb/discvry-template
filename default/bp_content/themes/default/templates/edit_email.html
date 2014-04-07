@@ -5,7 +5,8 @@
 {% endblock %}
 
 {% block content %}
-
+<div class="row">
+  <div class="col-lg-4">
     <form id="form_edit_email" action="{{ url|safe }}" method="post" class="well custom-well">
         <fieldset>
             <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
@@ -16,12 +17,16 @@
                 </div>
             </div>
             {{ macros.field(form.new_email, label=_("New Email"), placeholder=_("Enter a new email address"), class="input-xlarge focused required email form-control", type="email") }}
-            {{ macros.field(form.password, label=_("Current Password"), placeholder=_("Enter your")+" "+_("Password"), class="input-xlarge focused required form-control", type="password") }}
+            {% if pass %}
+              {{ macros.field(form.password, label=_("Current Password"), placeholder=_("Enter your")+" "+_("Password"), class="input-xlarge focused required form-control", type="password") }}
+            {% endif %}
             <div class="form-actions">
                 <button type="submit" class="btn btn-primary">{% trans %}Change your email{% endtrans %}</button>
             </div>
         </fieldset>
     </form>
+  </div>
+</div>
 
 {% endblock %}
 
