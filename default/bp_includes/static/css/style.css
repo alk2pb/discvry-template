@@ -267,3 +267,7 @@ a:focus {
 .btn-primary:hover {
   background-color: #3a5aa1;
 }
+
+.test {
+  background-color: #fff;
+}
