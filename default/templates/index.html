@@ -19,6 +19,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <link rel="import" href="bower_components/core-drawer-panel/core-drawer-panel.html">
     <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+    <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
+    <link rel="import" href="bower_components/core-scroll-header-panel/core-scroll-header-panel.html">
+    <link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
+    <link rel="import" href="bower_components/core-menu/core-menu.html">
+    <link rel="import" href="bower_components/core-item/core-item.html">
 
     <style>
 
@@ -29,6 +34,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       body {
         font-family: 'Roboto', sans-serif;
         margin: 0px;
+        background-color: #ececec;
       }
 
       [drawer] {
@@ -39,8 +45,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         height: 100%;
       }
 
-      .container {
+      #content {
+        height: 10000px;
+        display: none;
+      }
+
+      #intro {
+        background-color: red;
+      }
+
+      #about {
         height: 1000px;
+        background-color: blue;
+      }
+
+      #maintoolbar {
+        background-color: transparent;
+      }
+
+      #pageScroll {
+        text-decoration: none;
+        color: #000;
       }
 
     </style>
@@ -50,16 +75,57 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <body unresolved>
 
     <core-drawer-panel forceNarrow>
+      <core-header-panel drawer>
+        <core-toolbar>
+          <span>Menu</span>
+        </core-toolbar>
+        <core-menu>
+          <core-item label="One"></core-item>
+          <core-item label="Two"></core-item>
+        </core-menu>
+      </core-header-panel>
 
-      <div drawer></div>
-
-      <div main>
-        <div class="container">
+        <core-toolbar id="maintoolbar" main>
           <paper-icon-button icon="menu" core-drawer-toggle></paper-icon-button>
-        </div>
-      </div>
+          <span>Header</span>
+          <a id="pageScroll" href="#about"><paper-icon-button icon="menu"></paper-icon-button></a>
+        </core-toolbar>
 
     </core-drawer-panel>
+    <div id="content">
+      <section id="intro">
 
+      </section>
+      <section id="about">
+
+      </section>
+    </div>
+
+    <!-- Core JavaScript Files -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <script>
+      $(document).ready(function() {
+        // Adjust heights of intro and connect sections
+        var height = $(window).height();
+        if ($("#intro").height() < height){
+          $("#intro").height(height);
+        }
+
+        $("#content").show();
+
+        //jQuery for page scrolling feature - requires jQuery Easing plugin
+        $(function() {
+            $('#pageScroll').bind('click', function(event) {
+                var $anchor = $(this);
+                $('html, body').stop().animate({
+                    scrollTop: $($anchor.attr('href')).offset().top
+                }, 1500, 'easeInOutExpo');
+                event.preventDefault();
+            });
+        });
+      });
+    </script>
   </body>
 </html>
