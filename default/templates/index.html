@@ -68,28 +68,37 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         color: #000;
       }
 
+      core-drawer-panel {
+        position:fixed;
+
+      }
+
+      #menu {
+        height: 1000px;
+      }
+
     </style>
 
   </head>
 
   <body unresolved>
 
-    <core-drawer-panel forceNarrow>
+    <core-drawer-panel id="drawer" forceNarrow>
       <core-header-panel drawer>
         <core-toolbar>
           <span>Menu</span>
         </core-toolbar>
-        <core-menu>
+        <core-menu id="menu">
           <core-item label="One"></core-item>
           <core-item label="Two"></core-item>
         </core-menu>
       </core-header-panel>
 
-        <core-toolbar id="maintoolbar" main>
-          <paper-icon-button icon="menu" core-drawer-toggle></paper-icon-button>
-          <span>Header</span>
-          <a id="pageScroll" href="#about"><paper-icon-button icon="menu"></paper-icon-button></a>
-        </core-toolbar>
+      <core-toolbar id="maintoolbar" main>
+        <paper-icon-button icon="menu" core-drawer-toggle></paper-icon-button>
+        <span>Header</span>
+        <a id="pageScroll" href="#about"><paper-icon-button icon="menu"></paper-icon-button></a>
+      </core-toolbar>
 
     </core-drawer-panel>
     <div id="content">
@@ -125,6 +134,37 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 event.preventDefault();
             });
         });
+
+        var selected = "main";
+
+        document.querySelector('core-drawer-panel').addEventListener('core-select', function (event) {
+          if (selected != event.detail.item.id) {
+            if (selected == "main"){
+              // lock scroll position, but retain settings for later
+              var scrollPosition = [
+                self.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft,
+                self.pageYOffset || document.documentElement.scrollTop  || document.body.scrollTop
+              ];
+              var html = jQuery('html'); // it would make more sense to apply this to body, but IE7 won't have that
+              html.data('scroll-position', scrollPosition);
+              html.data('previous-overflow', html.css('overflow'));
+              html.css('overflow', 'hidden');
+              window.scrollTo(scrollPosition[0], scrollPosition[1]);
+
+              selected = "drawer";
+            }
+            else {
+              // un-lock scroll position
+              var html = jQuery('html');
+              var scrollPosition = html.data('scroll-position');
+              html.css('overflow', html.data('previous-overflow'));
+              window.scrollTo(scrollPosition[0], scrollPosition[1]);
+
+              selected = "main";
+            }
+          }
+        });
+
       });
     </script>
   </body>
