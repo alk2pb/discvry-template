@@ -1,474 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<html>
+  <head>
+    <title>core-drawer-panel</title>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Andy Keller</title>
-    <meta name="description" content="This website will give you a brief overview of who I am, my academic career, my professional career, and how to connect with me.">
-    <meta name="HandheldFriendly" content="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <!-- Bootstrap Core CSS -->
-    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
 
-    <!-- Fonts -->
-    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" type="text/css">
+    <link rel="import" href="bower_components/core-drawer-panel/core-drawer-panel.html">
+    <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
 
-    <!-- Custom Theme CSS -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/ripples.css" rel="stylesheet">
-</head>
+    <style>
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
-    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle withripple" data-toggle="collapse" data-target=".navbar-main-collapse">
-                    <i class="fa fa-bars"></i>
-                </button>
-
-                <a class="navbar-brand" href="#page-top">
-                  <img class="img-circle img-responsive shadow-z-2 profile-picture-collapse" src="img/profile.jpg">
-                  <span class="light navbar-brand-name">Andy</span> Keller
-                </a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-                <ul class="nav navbar-nav">
-                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#about">About</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#resume">Resume</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#projects">Projects</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#discvry">Discvry</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#connect" id="connect-link">Connect</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-    <section id="intro" class="intro">
-        <div class="intro-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <h1 class="brand-heading">
-                            <div class="profile-picture-container center-block"><img class="featurette-image img-circle img-responsive shadow-z-2 profile-picture" src="img/profile.jpg"></div>
-                        </h1>
-                        <p class="intro-text">Systems Engineer | Developer | Entrepreneur</p>
-                        <div class="page-scroll">
-                            <a href="#about" class="btn btn-circle">
-                                <i class="fa fa-angle-double-down animated"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-
-            <div class="footer">
-                <div class="caption pull-left" data-toggle="modal" data-target="#regensburgModal">
-                  <p>Regensburg, Germany</p>
-                </div>
-            </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="content-section shadow-z-2-equal">
-      <p class="section-heading-text text-center"><b>A</b>bout</p>
-      <div class="container">
-          <div class="row featurette shadow-z-1">
-            <div class="col-md-7">
-              <h2 class="featurette-heading withripple">Who am I?</h2>
-              <p>My name is Andy Keller and I was born in Regensburg, Germany to a German father and a Vietnamese mother. A couple months after I turned three, we moved to Richmond, Virginia and I have lived there ever since. As I grew up, my parents patiently taught me both of their mother tongues and I even picked up a bit of French in high school.</p>
-            </div>
-            <div class="col-md-5">
-              <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="500x500" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjI1MCIgeT0iMjUwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjMxcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NTAweDUwMDwvdGV4dD48L3N2Zz4=">
-            </div>
-          </div>
-          <div class="row featurette shadow-z-1">
-            <div class="col-md-5">
-              <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="500x500" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjI1MCIgeT0iMjUwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjMxcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NTAweDUwMDwvdGV4dD48L3N2Zz4=">
-            </div>
-            <div class="col-md-7">
-              <h2 class="featurette-heading withripple">Academic Career</h2>
-              <p>After highschool I entered the University of Virginia and majored in systems engineering at the School of Engineering and Applied Science (SEAS). During my second semester, the Rodman Scholars Program, which consists of the top 5% of students enrolled in SEAS, inducted me into their prestigious organization. Then, in my third semester, I went on to found the Math Modeling Group at UVA, which promotes the practical application of course work on real world problems.</p>
-            </div>
-          </div>
-          <div class="row featurette shadow-z-1">
-            <div class="col-md-7">
-              <h2 class="featurette-heading withripple">Professional Career</h2>
-              <p>Last summer, I participated in an absolutely amazing internship program with Epic Systems Corporation. Epic is a privately held health care software company whose systems are installed in major hospitals and hold the medical records of almost half the patients in the United States. I recently accepted Epic's fulltime offer and will be starting as a software developer in their analytics devision at the end of next summer.</p>
-            </div>
-            <div class="col-md-5">
-              <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="500x500" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjI1MCIgeT0iMjUwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjMxcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NTAweDUwMDwvdGV4dD48L3N2Zz4=">
-            </div>
-          </div>
-          <div class="row featurette shadow-z-1">
-            <div class="col-md-5">
-              <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="500x500" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjI1MCIgeT0iMjUwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjMxcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NTAweDUwMDwvdGV4dD48L3N2Zz4=">
-            </div>
-            <div class="col-md-7 page-scroll">
-              <a href="#discvry"><h2 class="featurette-heading withripple">Discvry</h2></a>
-              <p>In addition to my traditional career path, I founded my own technology startup in 2013. We are currently in the process of raising funds and developing a variety of ideas we believe will benefit society. This website is developed and maintained by Discvry, LLC. If you would like to learn more, visit our website: <a href="http://www.discvry.com">Discvry</a></p>
-            </div>
-          </div>
-      </div>
-    </section>
-
-    <section id="resume" class="content-section resume-section">
-        <div class="container">
-            <div class="section-heading text-center section-heading-raised withripple">
-                <h2>Resume</h2>
-            </div>
-            <a href="files/Keller_Resume.pdf" download="Keller_Resume.pdf"><button class="btn btn-fab btn-material-white shadow-z-2 resume-link" data-toggle="tooltip" data-placement="left" title="Download resume"><i class="fa fa-download fa-fw"></i></button></a>
-            <div class="row">
-                <div class="col-md-7 resume-content">
-                  <h3 class="featurette-heading withripple text-left">Experience</h3>
-
-                  <div class="resume-element">
-                    <p class="element-heading">Epic - <a href="http://www.epic.com">epic.com</a></p>
-                    <i>Software Developer</i>
-                    <ul type="square">
-                      <li>Led a team of three to integrate the R statistical language with Epic's Chronicles database. Also dabbled in medical and diagnostic analytics and developed a predictive modeling markup language (PMML) interpreter that will allow hospitals to share predictive models and calculate patients’ risk scores in real time.</li>
-                    </ul>
-                  </div>
-
-                  <div class="resume-element">
-                    <p class="element-heading">Predictive Technologies Laboratory - <a href="http://ptl.sys.virginia.edu/ptl/">ptl.sys.virginia.edu/ptl</a></p>
-                    <i>Undergraduate Research Assistant</i>
-                    <ul type="square">
-                      <li>Assisted in the development of crime prediction software</li>
-                      <li>Developed an online open research platform</li>
-                        <ul type="square">
-                          <li>Researchers and data scientists can access PTL data sets and compete with each other to create the best forecaster</li>
-                        </ul>
-                    </ul>
-                  </div>
-                  <div class="resume-element">
-                    <p class="element-heading">Discvry, LLC - <a href="http://www.discvry.com">discvry.com</a></p>
-                    <i>Founder and Developer</i>
-                    <ul type="square">
-                      <li>Developing a variety of software projects including an artist social network, a low net worth private wealth management platform, location based event updates, and crowdfunded education</li>
-                    </ul>
-                  </div>
-
-                  <div class="resume-element">
-                    <p class="element-heading">Math Modeling Group at UVA and Virginia Case Competition Association</p>
-                    <i>Founder, President, and Financial Officer</i>
-                    <ul type="square">
-                      <li>Dedicated to raising awareness towards mathematical modeling and its applications</li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div class="col-md-5 resume-content">
-                  <h3 class="featurette-heading withripple text-left">Education</h3>
-                  <div class="resume-element">
-                    <p class="element-heading">University of Virginia</p>
-                    <i>School of Engineering and Applied Sciences</i>
-                    <ul type="square">
-                      <li>Major: Systems and Information Engineering</li>
-                      <li>Minor: Engineering Business</li>
-                      <li>Current GPA: 3.75</li>
-                    </ul>
-                  </div>
-                  <div class="resume-element">
-                    <p class="element-heading">Mills E. Godwin High School</p>
-                    <i>Science, Math, and Technology Specialty Center</i>
-                    <ul type="square">
-                      <li>Cumulative GPA: 5.17</li>
-                    </ul>
-                  </div>
-
-                  <h3 class="featurette-heading withripple text-left">Skills</h3>
-                  <div class="resume-element">
-                    <p class="element-heading">Technical Languages</p>
-                    <ul type="none">
-                      <li>Python | Java | SQL | PHP | HTML | CSS | Javascript | XML</li>
-                    </ul>
-                  </div>
-
-                  <div class="resume-element">
-                    <p class="element-heading">Platforms</p>
-                    <ul type="none">
-                      <li>Google App Engine | AWS | webapp2 | Wordpress | Drupal | Matlab | Stata | R</li>
-                    </ul>
-                  </div>
-
-                  <div class="resume-element">
-                    <p class="element-heading">Languages</p>
-                    <ul type="none">
-                      <li>English | German | Vietnamese | French</li>
-                    </ul>
-                  </div>
-                </div>
-            </div>
-
-            <div class="footer">
-                <div class="caption pull-left" data-toggle="modal" data-target="#uvaModal">
-                  <p>University of Virginia</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="content-section shadow-z-2-equal">
-      <div class="section-banner">
-          <p class="section-heading-text text-center"><b>P</b>rojects</p>
-      </div>
-      <div class="container">
-          <div class="row featurette shadow-z-1">
-            <div class="col-md-7">
-              <h2 class="featurette-heading withripple">Capstone: Google Glass in Surgery<span class="text-muted"></span></h2>
-              <p>I am working with Professor Stephanie Guerlain and Doctor James Forrest Calland on developing applications for Google Glass in surgery. Our primary goal is to discover use cases for Glass that can be utilized in the operating room in order to assist medical students in actively learning how to perform a surgery. We will also place emphasis on developing applications that assist in the standardization of surgical procedures in order to improve safety in the operating room.
-</p>
-            </div>
-            <div class="col-md-5">
-              <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="500x500" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjI1MCIgeT0iMjUwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjMxcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NTAweDUwMDwvdGV4dD48L3N2Zz4=">
-            </div>
-          </div>
-          <div class="row featurette shadow-z-1">
-            <div class="col-md-5">
-              <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="500x500" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjI1MCIgeT0iMjUwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjMxcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NTAweDUwMDwvdGV4dD48L3N2Zz4=">
-            </div>
-            <div class="col-md-7">
-              <h2 class="featurette-heading withripple">Thesis: What is Google up to?<span class="text-muted"></span></h2>
-              <p>I am researching Google's business model and attempting to determine what Google's plans are for the forseeable future. In a recent article, the Wall Street Journal implies that Google is in direct competition with Apple with its new Nexus 6 smartphone. I, on the otherhand, do not believe that Google is competing directly with Apple at all. Furthmore, I claim that Google identifies itself purely as a software company that sells advertisements. Any foray into hardware, operating systems, or another industry is merely an attempt to increase advertisement viewership.</p>
-            </div>
-          </div>
-          <div class="row featurette shadow-z-1">
-            <div class="col-md-7">
-              <h2 class="featurette-heading withripple">Epic<span class="text-muted"></span></h2>
-              <p>I led a team to integrate the R statistical language with Epic's Chronicles database. I also dabbled in medical and diagnostic analytics and developed a predictive modeling markup language (PMML) interpreter that will allow hospitals to share predictive models and calculate patients’ risk scores in real time. I will be working in Epic's analytics devision as a software developer after I graduate.</p>
-            </div>
-            <div class="col-md-5">
-              <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="500x500" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjI1MCIgeT0iMjUwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjMxcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NTAweDUwMDwvdGV4dD48L3N2Zz4=">
-            </div>
-          </div>
-          <div class="row featurette shadow-z-1">
-            <div class="col-md-5">
-              <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="500x500" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjI1MCIgeT0iMjUwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjMxcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NTAweDUwMDwvdGV4dD48L3N2Zz4=">
-            </div>
-            <div class="col-md-7">
-              <h2 class="featurette-heading withripple">Predictive Technology Laboratory<span class="text-muted"></span></h2>
-              <p>I assisted Dr. Matthew Gerber of the Predictive Technology Laboratory (PTL) in developing two open source software projects: an open research platform and a crime prediction platform. The open research platform allows researchers and data scientists to access PTL datasets and compete with each other to develop the best forecaster. The crime prediction platform (Asymmmetric Threat Tracker) will allow municipalities to input marginal data in order to predict where crimes are most likely to occur.</p>
-            </div>
-          </div>
-      </div>
-    </section>
-
-    <div style="height:60px; background-color: #4367b8;"></div>
-
-    <section id="discvry" class="content-section shadow-z-2-equal">
-      <div class="section-banner text-center">
-          <a href="http://www.discvry.com"><p class="section-heading-text"><b>D</b>iscvry</p></a>
-      </div>
-      <div class="container">
-          <div class="row featurette">
-            <div class="col-md-4">
-              <h3 class="featurette-heading withripple">About</h3>
-              <p>Discvry is a technology startup I founded in order to consolidate and develop my ideas under one name.</p>
-            </div>
-            <div class="col-md-4">
-              <h3 class="featurette-heading withripple">Mission</h3>
-              <p>Our mission is to develop software and technologies that benefit humanity.</p>
-              <div class="mission">
-                <h3 class="mission-element-1">"Have fun,</h3>
-                <div class="newline"></div>
-                <h3 class="mission-element-2">Change the World."</h3>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <h3 class="featurette-heading withripple">Learn More</h3>
-              <p>To learn more and see a list of projects currently in development, please visit our website: <a href="http://www.discvry.com">discvry.com</a></p>
-              <!--<ul type="square">
-                <li>An artist's social network to provide any and all marketing needs</li>
-                <li>Low net worth private wealth management software platform</li>
-                <li>Location based event and notification updates</li>
-                <li>Crowdsourced education funding</li>
-              </ul>-->
-            </div>
-          </div>
-      </div>
-    </section>
-
-    <section id="connect" class="content-section connect-section">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-lg-12 col-lg-offset-0">
-                    <h2 class="section-heading section-heading-raised withripple">Connect with Me</h2>
-                    <ul class="list-inline banner-social-buttons">
-                        <li><a href="mailto:andykeller@discvry.com" target="_blank"><button class="btn btn-fab btn-material-white btn-lg btn-email shadow-z-2"><i class="fa fa-envelope fa-fw"></i><!-- <span class="network-name">E-Mail</span>--></button></a>
-                        </li>
-                        <li><a href="https://plus.google.com/u/0/108735871269718468972/posts" target="_blank"><button class="btn btn-fab btn-material-white btn-lg btn-google shadow-z-2"><i class="fa fa-google-plus fa-fw"></i><!-- <span class="network-name">Google+</span>--></button></a>
-                        </li>
-                        <li><a href="https://www.youtube.com/channel/UC27etvdbc687PHXIVMNz5Xg" target="_blank"><button class="btn btn-fab btn-material-white btn-lg btn-youtube shadow-z-2"><i class="fa fa-youtube fa-fw"></i><!-- <span class="network-name">YouTube</span>--></button></a>
-                        </li>
-                        <li><a href="https://www.facebook.com/andyltkeller" target="_blank"><button class="btn btn-fab btn-material-white btn-lg btn-facebook shadow-z-2"><i class="fa fa-facebook fa-fw"></i><!-- <span class="network-name">Facebook</span>--></button></a>
-                        </li>
-                        <li><a href="https://instagram.com/andyltkeller/" target="_blank"><button class="btn btn-fab btn-material-white btn-lg btn-instagram shadow-z-2"><i class="fa fa-instagram fa-fw"></i><!-- <span class="network-name">Instagram</span>--></button></a>
-                        </li>
-                        <li><a href="https://twitter.com/andyltkeller" target="_blank"><button class="btn btn-fab btn-material-white btn-lg btn-twitter shadow-z-2"><i class="fa fa-twitter fa-fw"></i><!-- <span class="network-name">Twitter</span>--></button></a>
-                        </li>
-                        <li><a href="https://www.linkedin.com/pub/andreas-keller/41/b30/7aa/" target="_blank"><button class="btn btn-fab btn-material-white btn-lg btn-linkedin shadow-z-2"><i class="fa fa-linkedin fa-fw"></i><!-- <span class="network-name">LinkedIn</span>--></button></a>
-                        </li>
-                        <li><a href="https://github.com/alk2pb" target="_blank"><button class="btn btn-fab btn-material-white btn-lg btn-github shadow-z-2"><i class="fa fa-github fa-fw"></i><!-- <span class="network-name">Github</span>--></button></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer">
-                <div class="caption pull-left" data-toggle="modal" data-target="#richmondModal">
-                  <p>Richmond, Virginia</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <div id="more-btn-group">
-      <a href="mailto:andykeller@discvry.com" target="_blank"><button class="btn btn-fab btn-fab-mini btn-fab-more btn-material-inbox contact-btn shadow-z-2 under" data-toggle="tooltip" data-placement="left" title="Contact"><i class="fa fa-envelope fa-fw"></i></button></a>
-      <button class="btn btn-fab btn-fab-mini btn-fab-more btn-material-deeppurple recruit-btn shadow-z-2 under" data-toggle="tooltip" data-placement="left" title="Recruit"><i class="fa fa-group fa-fw"></i></button>
-      <button class="btn btn-fab btn-fab-mini btn-fab-more btn-material-teal comment-btn shadow-z-2 under" data-toggle="tooltip" data-placement="left" title="Feedback"><i class="fa fa-comment fa-fw"></i></button>
-      <div data-toggle="modal" data-target="#shareModal"><button class="btn btn-fab btn-fab-mini btn-fab-more btn-material-yellow share-btn shadow-z-2 under" data-toggle="tooltip" data-placement="left" title="Share"><i class="fa fa-share-alt fa-fw"></i></button></div>
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-        <input type="hidden" name="cmd" value="_s-xclick">
-        <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
-        ">
-        <button class="btn btn-fab btn-fab-mini btn-fab-more btn-material-red donate-btn shadow-z-2 under" data-toggle="tooltip" data-placement="left" title="Donate"><i class="fa fa-heart fa-fw"></i></button>
-      </form>
-      <div data-toggle="modal" data-target="#legalModal"><button class="btn btn-fab btn-fab-mini btn-fab-more btn-material-grey copyright-btn shadow-z-2 under" data-toggle="tooltip" data-placement="left" title="Legal"><i class="fa fa-copyright fa-fw"></i></button></div>
-
-      <button class="btn btn-fab btn-material-blue more-btn shadow-z-2"><!--<img src="img/plus.png" class="plus">--><i class="fa fa-chevron-circle-up animation-rotate"></i></button>
-    </div>
-
-    <div class="modal fade" id="regensburgModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button class="btn btn-fab btn-fab-mini btn-material-red shadow-z-2 modal-close" data-dismiss="modal"><i class="fa fa-close fa-fw"></i></button>
-            <h4 class="modal-title" id="myModalLabel">Regensburg, Germany</h4>
-          </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-fab btn-material-blue shadow-z-2" data-dismiss="modal"><i class="fa fa-check-circle fa-fw"></i></button>
-            <!--<button type="button" class="btn btn-default">Confirm</button>-->
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="uvaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button class="btn btn-fab btn-fab-mini btn-material-red shadow-z-2 modal-close" data-dismiss="modal"><i class="fa fa-close fa-fw"></i></button>
-            <h4 class="modal-title" id="myModalLabel">University of Virginia</h4>
-          </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-fab btn-material-blue shadow-z-2" data-dismiss="modal"><i class="fa fa-check-circle fa-fw"></i></button>
-            <!--<button type="button" class="btn btn-default">Confirm</button>-->
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="richmondModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button class="btn btn-fab btn-fab-mini btn-material-red shadow-z-2 modal-close" data-dismiss="modal"><i class="fa fa-close fa-fw"></i></button>
-            <h4 class="modal-title" id="myModalLabel">Richmond, Virginia</h4>
-          </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-fab btn-material-blue shadow-z-2" data-dismiss="modal"><i class="fa fa-check-circle fa-fw"></i></button>
-            <!--<button type="button" class="btn btn-default">Confirm</button>-->
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button class="btn btn-fab btn-fab-mini btn-material-red shadow-z-2 modal-close" data-dismiss="modal"><i class="fa fa-close fa-fw"></i></button>
-            <h4 class="modal-title" id="myModalLabel">Share</h4>
-          </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-fab btn-material-blue shadow-z-2" data-dismiss="modal"><i class="fa fa-check-circle fa-fw"></i></button>
-            <!--<button type="button" class="btn btn-default">Confirm</button>-->
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="legalModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button class="btn btn-fab btn-fab-mini btn-material-red shadow-z-2 modal-close" data-dismiss="modal"><i class="fa fa-close fa-fw"></i></button>
-            <h4 class="modal-title" id="myModalLabel">Legal</h4>
-          </div>
-          <div class="modal-body">
-            This website is developed and maintained by Discvry, LLC.
-          </div>
-          <div class="modal-footer">
-            <div class="pull-left"><i class="fa fa-copyright fa-fw"></i>Discvry, LLC</div>
-            <button type="button" class="btn btn-fab btn-material-blue shadow-z-2" data-dismiss="modal"><i class="fa fa-check-circle fa-fw"></i></button>
-            <!--<button type="button" class="btn btn-default">Confirm</button>-->
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Core JavaScript Files -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <script type="text/javascript" src="http://jqueryrotate.googlecode.com/svn/trunk/jQueryRotate.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="js/material.js"></script>
-    <script src="js/ripples.js"></script>
-    <script src="js/script.js"></script>
-
-    <script>
-      $.material.init();
-
-      if ($(window).width() >= 767){
-        $(function () {
-          $('[data-toggle="tooltip"]').tooltip({container: 'body'})
-        });
+      html, body {
+        height: 100%;
       }
-    </script>
 
-</body>
+      body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0px;
+      }
 
+      [drawer] {
+        background-color: #fff;
+      }
+
+      core-header-panel {
+        height: 100%;
+      }
+
+      .container {
+        height: 1000px;
+      }
+
+    </style>
+
+  </head>
+
+  <body unresolved>
+
+    <core-drawer-panel forceNarrow>
+
+      <div drawer></div>
+
+      <div main>
+        <div class="container">
+          <paper-icon-button icon="menu" core-drawer-toggle></paper-icon-button>
+        </div>
+      </div>
+
+    </core-drawer-panel>
+
+  </body>
 </html>
