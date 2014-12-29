@@ -40,6 +40,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
     <link rel="import" href="bower_components/core-menu/core-menu.html">
     <link rel="import" href="bower_components/core-item/core-item.html">
+    <link rel="import" href="bower_components/paper-dropdown/paper-dropdown.html">
 
     <style>
 
@@ -169,7 +170,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <div flex></div>
           <paper-icon-button id="pageScrollUp" icon="expand-less"></paper-icon-button>
           <paper-icon-button id="pageScrollDown" icon="expand-more"></paper-icon-button>
-          <paper-icon-button icon="more-vert"></paper-icon-button>
+          <paper-icon-button icon="more-vert">
+          </paper-icon-button>
         </core-toolbar>
         <div id="content">
           <section id="p0">
@@ -219,12 +221,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </div>
           </section>
         </div>
-      </core-header-panel>
-
-    </core-drawer-panel>
-
-
-    <div id="more-btn-group">
+        <div id="more-btn-group">
       <a href="mailto:andykeller@discvry.com" target="_blank"><button class="btn btn-fab btn-fab-mini btn-fab-more btn-material-inbox contact-btn shadow-z-2 under" data-toggle="tooltip" data-placement="left" title="Contact"><i class="fa fa-envelope fa-fw"></i></button></a>
       <button class="btn btn-fab btn-fab-mini btn-fab-more btn-material-deeppurple recruit-btn shadow-z-2 under" data-toggle="tooltip" data-placement="left" title="Recruit"><i class="fa fa-group fa-fw"></i></button>
       <button class="btn btn-fab btn-fab-mini btn-fab-more btn-material-teal comment-btn shadow-z-2 under" data-toggle="tooltip" data-placement="left" title="Feedback"><i class="fa fa-comment fa-fw"></i></button>
@@ -239,6 +236,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       <button class="btn btn-fab btn-material-blue more-btn shadow-z-2"><!--<img src="img/plus.png" class="plus">--><i class="fa fa-chevron-circle-up animation-rotate"></i></button>
     </div>
+      </core-header-panel>
+
+    </core-drawer-panel>
+
+
+
 
     <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -396,39 +399,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           });
         });
 
-        // document.querySelector('core-drawer-panel').addEventListener('core-select', function (event) {
-        //   if (selected != event.detail.item.id) {
-        //     if (selected == "main"){
-        //       // lock scroll position, but retain settings for later
-        //       var scrollPosition = [
-        //         self.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft,
-        //         self.pageYOffset || document.documentElement.scrollTop  || document.body.scrollTop
-        //       ];
-        //       var html = jQuery('html'); // it would make more sense to apply this to body, but IE7 won't have that
-        //       html.data('scroll-position', scrollPosition);
-        //       html.data('previous-overflow', html.css('overflow'));
-        //       html.css('overflow', 'hidden');
-        //       window.scrollTo(scrollPosition[0], scrollPosition[1]);
-
-        //       selected = "drawer";
-
-        //       $("#more-btn-group").addClass("disabled");
-        //       // TODO: Prevent ripple
-        //     }
-        //     else {
-        //       // un-lock scroll position
-        //       var html = jQuery('html');
-        //       var scrollPosition = html.data('scroll-position');
-        //       html.css('overflow', html.data('previous-overflow'));
-        //       window.scrollTo(scrollPosition[0], scrollPosition[1]);
-
-        //       selected = "main";
-
-        //       $("#more-btn-group").removeClass("disabled");
-        //     }
-        //   }
-        // });
-
         $(function() {
             $('.pageScroll').bind('click', function(event) {
                 var $anchor = $(this);
@@ -440,6 +410,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 event.preventDefault();
             });
         });
+
+        $(document.querySelector('#paper-dropdown')).toggle;
       });
     </script>
   </body>

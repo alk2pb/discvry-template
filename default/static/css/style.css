@@ -455,6 +455,9 @@ a:focus {
   position:absolute;
   right: 10px;
   bottom: 10px;
+  /*border-style: solid;*/
+  /*border-color: rgba(0,0,0,0.1);*/
+  /*border-width: 0.5px;*/
 }
 
 .under {
@@ -550,21 +553,21 @@ a:focus {
     position: relative;
     /*position: fixed;
     bottom: 0px;*/
-    background: url(../img/richmond.jpg) no-repeat center center;
-    background-color: #000;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
+    /*background: url(../img/richmond.jpg) no-repeat center center;*/
+    /*background-color: #000;*/
+    /*-webkit-background-size: cover;*/
+    /*-moz-background-size: cover;*/
+    /*background-size: cover;*/
+    /*-o-background-size: cover;*/
 }
 
 @media(min-width:767px) {
   .connect-section {
-      background: url(../img/richmond.jpg) no-repeat center center fixed;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      background-size: cover;
-      -o-background-size: cover;
+      /*background: url(../img/richmond.jpg) no-repeat center center fixed;*/
+      /*-webkit-background-size: cover;*/
+      /*-moz-background-size: cover;*/
+      /*background-size: cover;*/
+      /*-o-background-size: cover;*/
   }
 }
 
