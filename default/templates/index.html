@@ -120,7 +120,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         transition: all .2s ease-in-out;
       }
 
-      #menu {
+      .menu {
         padding: 10px;
       }
 
@@ -143,6 +143,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         text-align: center;
         padding-bottom: 50px;
       }
+
+      #moreMenu {
+        position: absolute;
+        right: 8px;
+        top: 16px;
+        color: #000;
+        background-color: #ececec;
+        border-radius: 2px;
+        display: none;
+      }
     </style>
 
   </head>
@@ -154,7 +164,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <core-toolbar>
           <span></span>
         </core-toolbar>
-        <div id="menu">
+        <div class="menu">
           <div class="pageScroll core-selected" href="#p0"><p>One</p></div>
           <div class="pageScroll" href="#p1"><p>Two</p></div>
           <div class="pageScroll" href="#p2"><p>Three</p></div>
@@ -170,8 +180,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <div flex></div>
           <paper-icon-button id="pageScrollUp" icon="expand-less"></paper-icon-button>
           <paper-icon-button id="pageScrollDown" icon="expand-more"></paper-icon-button>
-          <paper-icon-button icon="more-vert">
-          </paper-icon-button>
+          <paper-icon-button id="moreMenuBtn" icon="more-vert"></paper-icon-button>
+          <div id="moreMenu" class="shadow-z-1">
+            <div class="menu">
+              <div class="pageScroll core-selected" href="#p0"><p>One</p></div>
+              <div class="pageScroll" href="#p1"><p>Two</p></div>
+              <div class="pageScroll" href="#p2"><p>Three</p></div>
+              <div class="pageScroll" href="#p3"><p>Four</p></div>
+            </div>
+          </div>
+
         </core-toolbar>
         <div id="content">
           <section id="p0">
@@ -313,6 +331,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         $("#content").show();
 
+        $("html").click(function() {
+          if (event.target.id == "moreMenuBtn") {
+            $("#moreMenu").toggle(200);
+          }
+          else if (event.target.id != "moreMenu" && event.target.id != "moreMenuBtn" && $("#moreMenu").is(":visible")) {
+            $("#moreMenu").hide(200);
+          }
+        });
 
         var sectionMap = {};
 
