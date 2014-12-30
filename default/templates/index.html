@@ -41,6 +41,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <link rel="import" href="bower_components/core-menu/core-menu.html">
     <link rel="import" href="bower_components/core-item/core-item.html">
     <link rel="import" href="bower_components/paper-dropdown/paper-dropdown.html">
+    <link rel="import" href="bower_components/paper-spinner/paper-spinner.html">
 
     <style>
 
@@ -72,7 +73,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       #content {
-        display: none;
+        /*display: none;*/
       }
 
       #p0 {
@@ -152,13 +153,32 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         border-radius: 2px;
         display: none;
       }
+
+      #container {
+        display: none;
+      }
+
+      #loading {
+        width: 100%;
+        height: 100%;
+        display: table;
+        background-color: #fff;
+      }
+
+      #spinner {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+      }
     </style>
 
   </head>
 
   <body>
-
-    <core-drawer-panel  forceNarrow>
+    <div id="loading">
+      <div id="spinner"><img src="img/spinner.gif"></div>
+    </div>
+    <core-drawer-panel  forceNarrow id="container">
       <core-header-panel drawer mode="seamed" id="drawer">
         <core-toolbar>
           <span></span>
@@ -193,6 +213,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <div id="content">
           <section id="p0">
             <div class="container">
+
             <p>Discvry</p>
             <div class="page-scroll">
               <a href="#p1" class="btn btn-circle pageScroll">
@@ -213,30 +234,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <div class="col-lg-12 col-lg-offset-0">
                         <h2 class="section-heading section-heading-raised withripple">Connect with Us</h2>
                         <ul class="list-inline banner-social-buttons">
-                            <li><a href="mailto:andykeller@discvry.com" target="_blank"><button class="btn btn-fab btn-material-white btn-lg btn-email shadow-z-2"><i class="fa fa-envelope fa-fw"></i><!-- <span class="network-name">E-Mail</span>--></button></a>
+                            <li><a href="mailto:andykeller@discvry.com" target="_blank"><button class="btn btn-fab btn-material-white btn-lg btn-email shadow-z-2"><i class="fa fa-envelope fa-fw"></i></button></a>
                             </li>
-                            <li><a href="https://plus.google.com/u/0/108735871269718468972/posts" target="_blank"><button class="btn btn-fab btn-material-white btn-lg btn-google shadow-z-2"><i class="fa fa-google-plus fa-fw"></i><!-- <span class="network-name">Google+</span>--></button></a>
+                            <li><a href="https://plus.google.com/u/0/108735871269718468972/posts" target="_blank"><button class="btn btn-fab btn-material-white btn-lg btn-google shadow-z-2"><i class="fa fa-google-plus fa-fw"></i></button></a>
                             </li>
-                            <li><a href="https://www.youtube.com/channel/UC27etvdbc687PHXIVMNz5Xg" target="_blank"><button class="btn btn-fab btn-material-white btn-lg btn-youtube shadow-z-2"><i class="fa fa-youtube fa-fw"></i><!-- <span class="network-name">YouTube</span>--></button></a>
+                            <li><a href="https://www.youtube.com/channel/UC27etvdbc687PHXIVMNz5Xg" target="_blank"><button class="btn btn-fab btn-material-white btn-lg btn-youtube shadow-z-2"><i class="fa fa-youtube fa-fw"></i></button></a>
                             </li>
-                            <li><a href="https://www.facebook.com/andyltkeller" target="_blank"><button class="btn btn-fab btn-material-white btn-lg btn-facebook shadow-z-2"><i class="fa fa-facebook fa-fw"></i><!-- <span class="network-name">Facebook</span>--></button></a>
+                            <li><a href="https://www.facebook.com/andyltkeller" target="_blank"><button class="btn btn-fab btn-material-white btn-lg btn-facebook shadow-z-2"><i class="fa fa-facebook fa-fw"></i></button></a>
                             </li>
-                            <li><a href="https://instagram.com/andyltkeller/" target="_blank"><button class="btn btn-fab btn-material-white btn-lg btn-instagram shadow-z-2"><i class="fa fa-instagram fa-fw"></i><!-- <span class="network-name">Instagram</span>--></button></a>
+                            <li><a href="https://instagram.com/andyltkeller/" target="_blank"><button class="btn btn-fab btn-material-white btn-lg btn-instagram shadow-z-2"><i class="fa fa-instagram fa-fw"></i></button></a>
                             </li>
-                            <li><a href="https://twitter.com/andyltkeller" target="_blank"><button class="btn btn-fab btn-material-white btn-lg btn-twitter shadow-z-2"><i class="fa fa-twitter fa-fw"></i><!-- <span class="network-name">Twitter</span>--></button></a>
+                            <li><a href="https://twitter.com/andyltkeller" target="_blank"><button class="btn btn-fab btn-material-white btn-lg btn-twitter shadow-z-2"><i class="fa fa-twitter fa-fw"></i></button></a>
                             </li>
-                            <li><a href="https://www.linkedin.com/pub/andreas-keller/41/b30/7aa/" target="_blank"><button class="btn btn-fab btn-material-white btn-lg btn-linkedin shadow-z-2"><i class="fa fa-linkedin fa-fw"></i><!-- <span class="network-name">LinkedIn</span>--></button></a>
+                            <li><a href="https://www.linkedin.com/pub/andreas-keller/41/b30/7aa/" target="_blank"><button class="btn btn-fab btn-material-white btn-lg btn-linkedin shadow-z-2"><i class="fa fa-linkedin fa-fw"></i></button></a>
                             </li>
-                            <li><a href="https://github.com/alk2pb" target="_blank"><button class="btn btn-fab btn-material-white btn-lg btn-github shadow-z-2"><i class="fa fa-github fa-fw"></i><!-- <span class="network-name">Github</span>--></button></a>
+                            <li><a href="https://github.com/alk2pb" target="_blank"><button class="btn btn-fab btn-material-white btn-lg btn-github shadow-z-2"><i class="fa fa-github fa-fw"></i></button></a>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <!--<div class="footer">-->
-                <!--    <div class="caption pull-left" data-toggle="modal" data-target="#richmondModal">-->
-                <!--      <p>Richmond, Virginia</p>-->
-                <!--    </div>-->
-                <!--</div>-->
             </div>
           </section>
         </div>
@@ -253,7 +269,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </form>
       <div data-toggle="modal" data-target="#legalModal"><button class="btn btn-fab btn-fab-mini btn-fab-more btn-material-grey copyright-btn shadow-z-2 under" data-toggle="tooltip" data-placement="left" title="Legal"><i class="fa fa-copyright fa-fw"></i></button></div>
 
-      <button class="btn btn-fab btn-material-blue more-btn shadow-z-2"><!--<img src="img/plus.png" class="plus">--><i class="fa fa-chevron-circle-up animation-rotate"></i></button>
+      <button class="btn btn-fab btn-material-blue more-btn shadow-z-2"><i class="fa fa-chevron-circle-up animation-rotate"></i></button>
     </div>
       </core-header-panel>
 
@@ -274,7 +290,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-fab btn-material-blue shadow-z-2" data-dismiss="modal"><i class="fa fa-check-circle fa-fw"></i></button>
-            <!--<button type="button" class="btn btn-default">Confirm</button>-->
           </div>
         </div>
       </div>
@@ -293,7 +308,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <div class="modal-footer">
             <div class="pull-left"><i class="fa fa-copyright fa-fw"></i>Discvry, LLC</div>
             <button type="button" class="btn btn-fab btn-material-blue shadow-z-2" data-dismiss="modal"><i class="fa fa-check-circle fa-fw"></i></button>
-            <!--<button type="button" class="btn btn-default">Confirm</button>-->
           </div>
         </div>
       </div>
@@ -330,8 +344,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           $("#p3").height(height - 201);
         }
 
-        $("#content").show();
-
         $("html").click(function() {
           if (event.target.id == "moreMenuBtn") {
             $("#moreMenu").toggle();
@@ -340,17 +352,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             $("#moreMenu").hide();
           }
         });
-
-        var sectionMap = {};
-
-        $("section").each(function() {
-          sectionMap[$(this).attr("id")] = $(this).offset().top - 145;
-        });
-
-        function sectionMapGet(k) {
-          return sectionMap[k];
-        }
-
 
         var position = 0;
         var max = 3;
@@ -440,6 +441,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         });
 
         $(document.querySelector('#paper-dropdown')).toggle;
+
+        window.addEventListener('polymer-ready', function(e) {
+          $("#container").show();
+          $("#loading").hide();
+        });
+
+        var sectionMap = {};
+
+        $("section").each(function() {
+          sectionMap[$(this).attr("id")] = $(this).offset().top - 145;
+        });
+
+        function sectionMapGet(k) {
+          return sectionMap[k];
+        }
       });
     </script>
   </body>
