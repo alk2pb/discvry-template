@@ -81,6 +81,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         width: 100%;
       }
 
+      #p0 .container {
+        height: 100%;
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+      }
+
       #p1 {
         height: 1000px;
       }
@@ -100,13 +107,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       #p0 p {
-        display: table-cell;
-        vertical-align: middle;
-        text-align: center;
         color: #fff;
         font-size: 400px;
         margin: 0px;
-        display: none;
+        font-family: 'Roboto', sans-serif;
+        /*letter-spacing: -5px;*/
       }
 
       #mainMenu {
@@ -137,17 +142,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         cursor: pointer;
       }
 
-      .page-scroll {
-        display: table-cell;
-        vertical-align: bottom;
-        text-align: center;
-        padding-bottom: 50px;
-      }
-
       #moreMenu {
         position: absolute;
         right: 8px;
         top: 16px;
+        min-width: 150px;
         color: #000;
         background-color: #ececec;
         border-radius: 2px;
@@ -193,11 +192,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </core-toolbar>
         <div id="content">
           <section id="p0">
+            <div class="container">
             <p>Discvry</p>
             <div class="page-scroll">
               <a href="#p1" class="btn btn-circle pageScroll">
                 <i class="fa fa-angle-double-down animated"></i>
               </a>
+            </div>
             </div>
           </section>
           <section id="p1">
@@ -333,10 +334,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         $("html").click(function() {
           if (event.target.id == "moreMenuBtn") {
-            $("#moreMenu").toggle(200);
+            $("#moreMenu").toggle();
           }
-          else if (event.target.id != "moreMenu" && event.target.id != "moreMenuBtn" && $("#moreMenu").is(":visible")) {
-            $("#moreMenu").hide(200);
+          else if (event.target.id != "moreMenu" && event.target.id != "moreMenuBtn" && $("#moreMenu").is(":visible") && !jQuery.contains(document.getElementById("moreMenu"),event.target)) {
+            $("#moreMenu").hide();
           }
         });
 
@@ -429,6 +430,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             $('.pageScroll').bind('click', function(event) {
                 var $anchor = $(this);
                 document.querySelector('core-drawer-panel').closeDrawer();
+                $("#moreMenu").hide();
 
                 $(document.querySelector('#mainContainer').scroller).stop().animate({
                     scrollTop: sectionMapGet($($anchor.attr('href')).attr("id"))
