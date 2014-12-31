@@ -176,7 +176,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <body>
     <div id="loading">
-      <div id="spinner"><img src="img/spinner.gif"></div>
+      <div id="spinner"></div>
     </div>
     <core-drawer-panel  forceNarrow id="container">
       <core-header-panel drawer mode="seamed" id="drawer">
@@ -442,20 +442,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         $(document.querySelector('#paper-dropdown')).toggle;
 
-        window.addEventListener('polymer-ready', function(e) {
-          $("#container").show();
-          $("#loading").hide();
-        });
-
         var sectionMap = {};
-
-        $("section").each(function() {
-          sectionMap[$(this).attr("id")] = $(this).offset().top - 145;
-        });
 
         function sectionMapGet(k) {
           return sectionMap[k];
         }
+
+        window.addEventListener('polymer-ready', function(e) {
+          $("#container").show();
+          $("#loading").hide();
+
+          $("section").each(function() {
+            sectionMap[$(this).attr("id")] = $(this).offset().top;
+          });
+        });
       });
     </script>
   </body>
