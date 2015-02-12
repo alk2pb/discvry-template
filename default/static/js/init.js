@@ -14,6 +14,27 @@ $(document).ready(function() {
   $('.p2').attr('data-tooltip','Project 2');
   $('.p3').attr('data-tooltip','Project 3');
 
+  // Listen for orientation changes
+  window.addEventListener("orientationchange", function() {
+  	// Announce the new orientation number
+  	location.reload();
+  }, false);
+
+  // function hideAddressBar()
+  // {
+  //   if(!window.location.hash)
+  //   {
+  //       if(document.height < window.outerHeight)
+  //       {
+  //           document.body.style.height = (window.outerHeight + 50) + 'px';
+  //       }
+
+  //       setTimeout( function(){ window.scrollTo(0, 1); }, 50 );
+  //   }
+  // }
+
+  // window.addEventListener("load", function(){ if(!window.pageYOffset){ hideAddressBar(); } } );
+  // window.addEventListener("orientationchange", hideAddressBar );
 
   $('#intro').height($(window).height()*.9);
   $('#intro-spacer').height($('#intro').height());
@@ -85,11 +106,13 @@ $(document).ready(function() {
       if ($('body').scrollTop() > $('#intro').height()){
         if ($('#footer').css('opacity') != 1) {
           $('#footer').css('opacity', 1);
+          $('#footer').css('z-index', 1);
         }
       }
       else {
         if ($('#footer').css('opacity') != 0) {
           $('#footer').css('opacity', 0);
+          $('#footer').css('z-index', 0);
         }
       }
 
@@ -193,9 +216,11 @@ $(document).ready(function() {
 
       if ($('body').scrollTop() > $('#intro').height()){
         $('#footer').css('opacity', 1);
+        $('#footer').css('z-index', 1);
       }
       else {
         $('#footer').css('opacity', 0);
+        $('#footer').css('z-index', 0);
       }
       $('section').last().prev().css('margin-bottom',$('#footer').height());
 
