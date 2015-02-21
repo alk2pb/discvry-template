@@ -788,7 +788,7 @@
 
     };
 
-    Slick.prototype.getDotCount = function() {
+    Slick.prototype.getDotCount = Slick.prototype.slickSlidePositionCount = function() {
 
         var _ = this;
 
