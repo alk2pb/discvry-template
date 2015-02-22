@@ -98,7 +98,7 @@ section {
 
 footer.page-footer {
   margin: 0px;
-  background-color: #4367b8;
+  background-color: #607d8b;
   padding: 0px;
 }
 
@@ -112,6 +112,14 @@ footer.page-footer {
 
 .logo-footer {
   color: #fff;
+}
+
+.logo-footer:hover {
+  text-decoration: underline;
+}
+
+.inline {
+  display: inline;
 }
 
 .button-more {
